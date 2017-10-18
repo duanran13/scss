@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "this is a test",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "vinyl-paths": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duanran13/scss.git"
+  },
+  "author": "duanran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duanran13/scss/issues"
+  },
+  "homepage": "https://github.com/duanran13/scss#readme"
+}

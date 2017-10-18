@@ -1,0 +1,91 @@
+$fontSize:12px;
+$color:#ddd;
+$lte7:true;
+$_columns:12 !default;
+$_columns-width:60px !default;
+$_guutter:20px !default;
+body{
+  font-size:$fontSize;
+}
+h1 {
+  font-size:$fontSize;
+  $color: #888;
+  color: $color;
+}
+.ddd{
+  color:$color;
+}
+a{
+  color: $color;
+}
+@mixin body{
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin float($float:left){
+  float: $float;
+  @if $lte7{
+    display: inline;
+  }
+}
+.ddd{
+  @include float;
+}
+a{
+  @include float(right);
+}
+@mixin box-shadow($shadow){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+.ddd{
+  @include box-shadow(0 0 5px rgba(0,0,0,0.3));
+}
+@mixin  triangle($direction,$size,$borderColor){
+  content:'';
+  height: 0;
+  width: 0;
+  @if $direction == top{
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  }
+  @else if $direction == right{
+    border-left: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  }
+}
+.ddd{
+  @include triangle(top,10px,red);
+}
+%clearfix{
+  @if $lte7{
+    *zoom: 1;
+  }
+  &:before,
+  &:after{
+    content: '';
+    display: table;
+    font: 0/0 a;
+  }
+  &:after{
+    claer:both;
+  }
+}
+.ddd{
+  @extend  %clearfix;
+}
+@function get-width($columns:$_columns,$onliInnerWidth:true,$_subtract:0){
+  //$return: ($_column-width + $_gutter) * $columns - $_subtract !default;
+  $return: ($_columns-width+$_guutter)*$columns - $_subtract !default;
+  @if $onliInnerWidth == true{
+    $return:($_columns-width + $_guutter)*$columns - $_guutter - $_subtract;
+
+  }
+  @return $return;
+}
+.ddd{
+  width: get-width(3,true,30px);
+}
